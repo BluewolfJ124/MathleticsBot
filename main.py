@@ -23,7 +23,7 @@ def read():
         if type(i) == int:
             pass
         else:
-            if max(i) - min(i) > 50:
+            if max(i) - min(i) > 100:   
                 numbers.append(numbers[x_val.index(i)])
                 x_val[x_val.index(i)] = max(i)
                 x_val.append(min(i))
