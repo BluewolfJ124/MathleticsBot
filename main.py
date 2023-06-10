@@ -17,23 +17,21 @@ def read():
         threshold = .8
         loc = np.where(res >= threshold)
         if (loc[::-1])[0].size and (loc[::-1][1]).size > 4:
-            print(i)
             x_val.append(np.array(loc[::-1][0]).tolist())
             numbers.append(os.path.splitext(i)[0])
-    print(numbers)
     for i in x_val:
         if type(i) == int:
             pass
         else:
-            if max(i) - min(i) > 100:
+            if max(i) - min(i) > 50:
                 numbers.append(numbers[x_val.index(i)])
                 x_val[x_val.index(i)] = max(i)
                 x_val.append(min(i))
-                print("repeated")
             else:
                 x_val[x_val.index(i)] = max(i)
     print(x_val)
     Z = [x for _,x in sorted(zip(x_val,numbers))]
+    print(Z)
     pyautogui.write(str(eval(str(''.join(Z)))),interval=0)
 
 time.sleep(2)
